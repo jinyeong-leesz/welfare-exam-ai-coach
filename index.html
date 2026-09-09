@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#5962ef" />
+<meta name="description" content="사회복지사 1급 + 지방직 9급 사회복지직 AI 학습 코치" />
+<link rel="manifest" href="./manifest.webmanifest" />
+<link rel="icon" href="./icon.svg" type="image/svg+xml" />
+<title>복지시험 AI 코치</title>
+<style>
+html,body{margin:0;width:100%;height:100%;background:#f6f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}*{box-sizing:border-box}.app{height:100%;display:flex;flex-direction:column}.top{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:#fff;border-bottom:1px solid #e7e9ef;flex:0 0 auto}.brand{display:flex;align-items:center;gap:9px;font-weight:850;color:#232631}.logo{width:32px;height:32px;border-radius:10px;background:#5962ef;color:#fff;display:grid;place-items:center;font-size:18px}.live{font-size:11px;font-weight:800;color:#15734f;background:#eaf8f1;border-radius:99px;padding:6px 9px}.frame{position:relative;flex:1;min-height:0}.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}.fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:24px;background:#f6f7fb;text-align:center}.card{max-width:420px;background:#fff;border:1px solid #e7e9ef;border-radius:20px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.05)}.card h1{font-size:20px;margin:0 0 8px}.card p{font-size:13px;color:#6f7480;line-height:1.6}.btn{display:block;text-decoration:none;background:#5962ef;color:#fff;font-weight:800;border-radius:14px;padding:13px 16px;margin-top:12px}body.standalone .top{display:none}@media(display-mode:standalone){.top{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top"><div class="brand"><div class="logo">📘</div>복지시험 AI 코치</div><div class="live">LIVE</div></header>
+  <main class="frame">
+    <iframe id="appFrame" src="https://welfareai-5z3vfxhm.manus.space" title="복지시험 AI 코치" allow="clipboard-read; clipboard-write" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="fallback" id="fallback"><div class="card"><h1>복지시험 AI 코치</h1><p>웹앱을 화면 안에서 열 수 없는 경우 아래 버튼으로 바로 실행할 수 있어요.</p><a class="btn" href="https://welfareai-5z3vfxhm.manus.space">학습 앱 열기</a></div></div>
+  </main>
+</div>
+<script>
+if(window.matchMedia('(display-mode: standalone)').matches) document.body.classList.add('standalone');
+const f=document.getElementById('appFrame'), fb=document.getElementById('fallback');
+let loaded=false;f.addEventListener('load',()=>{loaded=true});setTimeout(()=>{if(!loaded)fb.style.display='flex'},7000);
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+</script>
+</body>
+</html>
