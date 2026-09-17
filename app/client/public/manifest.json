@@ -1,0 +1,16 @@
+{
+  "name": "복지시험 AI 코치 MAX",
+  "short_name": "복지시험 코치",
+  "lang": "ko",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f8fb",
+  "theme_color": "#5968e9",
+  "description": "사회복지사 1급과 2027 지방직 9급을 위한 학습 코치",
+  "icons": [{
+    "src": "/favicon.svg",
+    "sizes": "any",
+    "type": "image/svg+xml",
+    "purpose": "any maskable"
+  }]
+}
