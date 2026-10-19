@@ -1,9 +1,7 @@
-const CACHE='welfare-exam-ai-coach-v1';
-const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg'];
+const CACHE='welfare-coach-v2-20261019';
+const ASSETS=['./','./index.html','./styles.css','./questions.js','./core.js','./app.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))));
-self.addEventListener('fetch',e=>{
-  const u=new URL(e.request.url);
-  if(u.origin!==self.location.origin) return;
-  e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{const copy=res.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return res;}).catch(()=>caches.match('./index.html'))));
+self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const k of await caches.keys()){if((k.startsWith('welfare-coach-')||k.startsWith('welfare-exam-ai-coach-'))&&k!==CACHE)await caches.delete(k);}await self.clients.claim();})()));
+self.addEventListener('fetch',e=>{const url=new URL(e.request.url);if(e.request.method!=='GET'||url.origin!==self.location.origin||!url.href.startsWith(self.registration.scope))return;
+ e.respondWith((async()=>{const c=await caches.open(CACHE);const cached=await c.match(e.request,{ignoreSearch:true});if(cached)return cached;try{return await fetch(e.request);}catch{if(e.request.mode==='navigate')return c.match('./index.html');return Response.error();}})());
 });
