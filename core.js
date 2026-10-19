@@ -27,8 +27,8 @@ function summary(state,questions,now=Date.now()){
 function validateState(s,questions){
  if(!s||s.version!==2||!Array.isArray(s.attempts)||!s.reviews||!s.notes||Array.isArray(s.reviews)||Array.isArray(s.notes))throw Error('지원하지 않는 백업 형식입니다.');
  const map=new Map(questions.map(q=>[q.id,q]));
- for(const a of s.attempts){const q=map.get(a.qid);if(!q||a.exam!==q.exam||a.subject!==q.subject||!Number.isInteger(a.choice)||a.choice<0||a.choice>=q.options.length||a.correct!==(a.choice===q.answer)||!Number.isFinite(a.at)||a.at<0||typeof a.id!=='string')throw Error('풀이 기록이 올바르지 않습니다.');}
- for(const [id,r] of Object.entries(s.reviews)){if(!map.has(id)||!r||!Number.isInteger(r.stage)||r.stage<0||r.stage>3||!Number.isFinite(r.anchor)||typeof r.resolved!=='boolean'||(r.resolved?(r.due!==null||r.stage!==3):(!Number.isFinite(r.due)||r.stage>=3||r.due<r.anchor)))throw Error('복습 기록이 올바르지 않습니다.');}
+ for(const a of s.attempts){const q=map.get(a.qid);if(!q||a.exam!==q.exam||a.subject!==q.subject||!Number.isInteger(a.choice)||a.choice<0||a.choice>=q.options.length||a.correct!==(a.choice===q.answer)||!Number.isFinite(a.at)||a.at<0||a.at>8640000000000000-86400000||typeof a.id!=='string')throw Error('풀이 기록이 올바르지 않습니다.');}
+ for(const [id,r] of Object.entries(s.reviews)){if(!map.has(id)||!r||!Number.isInteger(r.stage)||r.stage<0||r.stage>3||(!Number.isFinite(r.anchor)||r.anchor<0||r.anchor>8640000000000000-86400000)||typeof r.resolved!=='boolean'||(r.resolved?(r.due!==null||r.stage!==3):(!Number.isFinite(r.due)||r.due>8640000000000000-86400000||r.stage>=3||r.due<r.anchor)))throw Error('복습 기록이 올바르지 않습니다.');}
  for(const [id,n]of Object.entries(s.notes)){if(!map.has(id)||typeof n!=='string'||n.length>5000)throw Error('메모가 올바르지 않습니다.');}
  return {version:2,attempts:s.attempts,reviews:s.reviews,notes:s.notes};
 }

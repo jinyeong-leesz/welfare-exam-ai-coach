@@ -43,7 +43,7 @@ node --test tests/*.test.cjs
 
 ## GitHub Pages
 기존 `.github/workflows/deploy-pages.yml`을 유지합니다. Settings → Pages → Source가 GitHub Actions인지 확인합니다.
-main 변경 시 Checkout → 정적 파일 업로드 → Pages 배포가 실행됩니다. `manifest.webmanifest`의 scope/start_url과 자산 경로는 상대경로여서 프로젝트 하위 경로에서도 실행됩니다.
+main 변경 시 Checkout → Node 핵심·오프라인 테스트 → 정적 파일 업로드 → Pages 배포가 실행됩니다. `manifest.webmanifest`의 scope/start_url과 자산 경로는 상대경로여서 프로젝트 하위 경로에서도 실행됩니다.
 
 업로드로 적용하려면 이 저장소 루트 파일들을 같은 이름으로 교체하고 신규 js/css/png를 함께 올립니다. 별도 npm 빌드나 API 키는 필요하지 않습니다.
 
@@ -52,7 +52,7 @@ main 변경 시 Checkout → 정적 파일 업로드 → Pages 배포가 실행�
 - `questions.js`: 과목과 문제 데이터
 - `core.js`: 채점, 일정, 통계, 백업 검증
 - `sw.js`: 동일 출처·현재 앱 범위의 캐시, GET만 처리, 다른 앱 캐시 보존
-- `tests/core.test.cjs`: 복습 시각·재오답·과목 분리·백업·자산 검증
+- `tests/core.test.cjs`, `tests/sw.test.cjs`: 복습 시각·재오답·과목 분리·백업·오프라인 자산 검증
 - `VERIFICATION.md`: 실제 검증 결과와 남은 확인 사항
 
 문제를 추가하거나 자산을 변경하면 `sw.js` 및 `app.js`의 캐시 버전 문자열을 함께 올려야 합니다.

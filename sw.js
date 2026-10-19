@@ -1,4 +1,4 @@
-const CACHE='welfare-coach-v2-20261019';
+const CACHE='welfare-coach-v2-20261019-r2';
 const ASSETS=['./','./index.html','./styles.css','./questions.js','./core.js','./app.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
 self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const k of await caches.keys()){if((k.startsWith('welfare-coach-')||k.startsWith('welfare-exam-ai-coach-'))&&k!==CACHE)await caches.delete(k);}await self.clients.claim();})()));
