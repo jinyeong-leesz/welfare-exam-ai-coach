@@ -23,7 +23,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Node\n        uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - name: Verify learning and offline behavior\n        run: node --test tests/*.test.cjs\n      - name: Configure Pages
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify learning and offline behavior
+        run: node --test tests/*.test.cjs
+      - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
